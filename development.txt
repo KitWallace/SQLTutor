@@ -1,0 +1,62 @@
+(:  generates a page to set an SQL task, accept SQL input, execute that SQL and compare the results with the expected results.  
+
+ Bugs:
+     Commands should be the same if single or double quotes are used
+     Spaces are not significant in some places in SQL so insignificant differences are sometimes detected
+     Bare < in a error message generates an XML parse error - will  be fixed with switch to SQL module
+
+ Bugs Fixed 
+     > Discussions coming out when the step is initially displayed, not when the query has been executed correctly
+     > Hints should shown if there is a syntax error
+     > Column comparison not working  -too lax
+     > Table comparison was broken and too lax 
+     
+ To do
+   students dont read the discussion note and go straight on to the next page - perhasp should confirm they have read it first.
+   detect rows in a different order if not ORDER BY
+   Improve diagnostics
+   Allow user to comment on questions - to add alternative ways of achieving the same effect - as per slides 
+   Add search amongst a set of worksheets 
+   Add registration and tracking of user activity
+   Add other types of question - eg text, multiple choice
+   Use the SQL module rather than use the PHP helper - this opens the way for different databases to be used - problem with SQL module  which throws a Java exception if the sql isinvalid - needs a Java change
+   before use - Adam has made this change in the trunk - one small bug needs fixing by Adam but he's not responding
+   How to support database creation and data insert, update and delete?
+         Need registration and user to input their own username and db password - then use these in the connection 
+         How to support the creation of a standard database - e.g. drop and create the empdept tables so these can be updated - yes we can put the scripts into a worksheet so when the step is run, it does the stp 
+          on the students own tables
+   Hints should be associated with different kinds of error
+   Some entries are just text (Hint) others expect  elements - no consistancy here - should be able to cope with both.
+   Description/ Discussion distinction could be made by placement in the script rather than different names
+   Move the worksheet directory into Wiki2 to avoid prying eyes.
+   Parameterised Queries - coding done -see testrandom.xq - just need to figure out how to include -
+         what about the printed version, the index
+         the Description is not paramererised
+   Student can't review an answer they have correctly entered because the application does not remember where the individual student has been - registration and user state for that.
+   Students can get to see the correct result  whatever invalid SQL they enter - needs some staged release of information - but that  would need state too.
+   Replace the generic Step with Reading, Demo , Exercise , ScratchPad elements to faciltate validation of a worksheet and procesing with typeswitch - major upheaval!
+    
+   Done
+      >Tag exercises by language construct or RDBMS concept
+     > add index to worksheets and constructs 
+     > add keyboard control sto step through tutorial
+     > Scratch pad for testing commands without checking. - getSQL with no model
+     > Styling the page  
+     > Create the initial lessons with hints
+     > detect columns in a different order
+     > Ordering worksheets  - by name with leading number
+     > Add index to worksheets
+     > Worksheets need to belong to a group for printing and selection.
+     > Add monitoring of accesses - may need to move the log location - add the ip address   
+     > Review markup of types of step
+     >  create a general PHP script to do the interfacing as a temporary measure.  
+     > About  page added
+     > support external worksheets - id may be a url
+     > print a full worksheet
+     > Print Stylesheet needed
+     > Notate the index to show the kind of step involved 
+     >  Add link to datamodel in the menu - could add Nav elements to a worksheet to be merged in 
+     >  Add log analysis by worksheet  loganalysis.xq?id=select1 ? improve layout 
+     > Put cursor in the textbox on page load - but generates error if no textbox  present
+     > Added Prompt which pre fills the SQL box with a template
+:)
